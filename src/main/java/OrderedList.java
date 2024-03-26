@@ -1,9 +1,13 @@
-
 public class OrderedList {
 
 	private Node<NumCount> lst;
 
 	public void insertNum(int x) {
+		if(lst==null) {
+			lst=new Node<>(new NumCount(x,1));
+			System.out.println("insert " + x);
+			return;
+		}
 		Node<NumCount> p=new Node<>(null,lst);
 		lst=p;
 		boolean flag=false;
@@ -41,6 +45,27 @@ public class OrderedList {
 	}
 
 	public void removeNum(int x) {
+		Node<NumCount> p=new Node<>(null,lst);
+		lst=p;
+		boolean flag=false;
+		while(lst.hasNext()&&!flag){
+			if(lst.getNext().getValue().getNum()==x){
+				lst.getNext().getValue().setCount(lst.getNext().getValue().getCount()-1);
+				flag=true;
+			}
+			if(lst.getNext().getValue().getNum()==x&&lst.getNext().getValue().getCount()==0){
+				lst.setNext(lst.getNext().getNext());
+				flag=true;
+			}
+			else
+				lst=lst.getNext();
+		}
+		lst=p.getNext();
 		System.out.println("remove " + x);
 	}
+
+	public String toString() {
+		return "OrderedList [lst=" + lst + "]";
+	}
+	
 }
