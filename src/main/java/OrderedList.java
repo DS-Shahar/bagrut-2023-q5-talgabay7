@@ -20,6 +20,11 @@ public class OrderedList {
 			}
 			lst=lst.getNext();
 		}
+		if(!flag){
+			temp=new Node<NumCount>(new NumCount(x,1));
+			lst.setNext(temp);
+		}
+		lst=p.getNext();
 		System.out.println("insert " + x);
 	}
 
