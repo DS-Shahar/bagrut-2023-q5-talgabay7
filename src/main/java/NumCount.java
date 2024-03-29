@@ -20,4 +20,7 @@ public class NumCount {
 	public void setCount(int count) {
 		this.count = count;
 	}
+	public String toString() {
+		return "NumCount [num=" + num + ", count=" + count + "]";
+	}
 }
